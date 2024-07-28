@@ -1,0 +1,36 @@
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Playwrite+DE+Grund:wght@100..400&display=swap");
+
+button {
+  background: radial-gradient(
+    circle,
+    rgba(238, 174, 202, 1) 0%,
+    rgba(148, 187, 233, 1) 100%
+  );
+}
+
+#main-text {
+  font-family: "Pacifico", cursive;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 2 !important;
+  background: linear-gradient(
+    0deg,
+    rgba(34, 193, 195, 1) 0%,
+    rgba(253, 187, 45, 1) 100%
+  );
+  /*background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);*/
+  background-size: 180% 180%;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+}
+
+#small-text {
+  font-family: "Playwrite DE Grund", cursive;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 21px;
+}
