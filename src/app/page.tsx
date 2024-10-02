@@ -122,8 +122,8 @@ export default function LandingPage() {
           </h2>
           <p className="text-base sm:text-lg mb-10">
             SkyFarms is revolutionizing agriculture by transforming urban
-            skyscrapers into vertical farms. We're bringing fresh, locally grown
-            produce right to the heart of cities, making healthy food more
+            skyscrapers into vertical farms. We&apos;re bringing fresh, locally
+            grown produce right to the heart of cities, making healthy food more
             accessible than ever before.
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
@@ -231,56 +231,46 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* Contact Form Modal */}
+      {/* Contact Form Dialog */}
       <Dialog open={isContactFormOpen} onOpenChange={closeContactForm}>
         <DialogContent>
           <DialogHeader>
             <DialogTitle>Contact Us</DialogTitle>
-            {!submitted && !loading && (
-              <DialogDescription>
-                Have questions or want to get involved? Fill out the form below,
-                and we’ll get back to you soon!
-              </DialogDescription>
-            )}
+            <DialogDescription>
+              Fill out the form below to get in touch with us.
+            </DialogDescription>
           </DialogHeader>
-          {!submitted ? (
-            <form onSubmit={handleSubmit}>
-              <div className="mb-4">
-                <Input
-                  type="text"
-                  placeholder="Your Name"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  required
-                />
-              </div>
-              <div className="mb-4">
-                <Input
-                  type="email"
-                  placeholder="Your Email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                />
-              </div>
-              <div className="mb-4">
-                <Textarea
-                  placeholder="Your Message"
-                  value={message}
-                  onChange={(e) => setMessage(e.target.value)}
-                  required
-                />
-              </div>
-              <Button type="submit" disabled={loading} className="w-full">
-                {loading ? "Sending..." : "Send Message"}
-              </Button>
-            </form>
-          ) : (
-            <div className="text-center">
-              <p className="text-lg">
-                Thank you for reaching out! We’ll get back to you soon.
-              </p>
-            </div>
+          <form onSubmit={handleSubmit}>
+            <Input
+              required
+              placeholder="Your Name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              className="mb-4"
+            />
+            <Input
+              required
+              type="email"
+              placeholder="Your Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="mb-4"
+            />
+            <Textarea
+              required
+              placeholder="Your Message"
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+              className="mb-4"
+            />
+            <Button type="submit" disabled={loading} className="w-full">
+              {loading ? "Sending..." : "Send Message"}
+            </Button>
+          </form>
+          {submitted && (
+            <p className="mt-4 text-green-400">
+              Your message has been sent! We&apos;ll get back to you shortly.
+            </p>
           )}
         </DialogContent>
       </Dialog>
@@ -288,51 +278,47 @@ export default function LandingPage() {
   );
 }
 
-function FeatureCard({ icon, title, description }) {
-  return (
-    <motion.div
-      whileHover={{ scale: 1.05 }}
-      className="bg-white p-6 rounded-lg shadow-lg"
-    >
-      <div className="flex justify-center mb-4">{icon}</div>
-      <h3 className="text-lg sm:text-xl font-semibold mb-3">{title}</h3>
-      <p className="text-sm sm:text-base">{description}</p>
-    </motion.div>
-  );
-}
+const FeatureCard = ({
+  icon,
+  title,
+  description,
+}: {
+  icon: React.ReactNode;
+  title: string;
+  description: string;
+}) => (
+  <div className="bg-white rounded-lg shadow-lg p-6">
+    <div className="flex justify-center mb-4">{icon}</div>
+    <h3 className="text-lg font-semibold mb-2">{title}</h3>
+    <p className="text-gray-600">{description}</p>
+  </div>
+);
 
-function BenefitItem({ title, children }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-      className="flex items-start space-x-3"
-    >
-      <Sun className="w-5 h-5 sm:w-6 sm:h-6 mt-1 flex-shrink-0" />
-      <div>
-        <h3 className="font-semibold text-base sm:text-lg mb-2">{title}</h3>
-        <p className="text-sm sm:text-base">{children}</p>
-      </div>
-    </motion.div>
-  );
-}
+const BenefitItem = ({
+  title,
+  children,
+}: {
+  title: string;
+  children: React.ReactNode;
+}) => (
+  <div className="flex flex-col bg-white rounded-lg p-6 shadow-md">
+    <h3 className="text-lg font-semibold mb-2">{title}</h3>
+    <p className="text-gray-600">{children}</p>
+  </div>
+);
 
-function Step({ number, title, children }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, x: -20 }}
-      whileInView={{ opacity: 1, x: 0 }}
-      transition={{ duration: 0.5 }}
-      className="flex items-start space-x-4"
-    >
-      <div className="flex-shrink-0 w-6 h-6 sm:w-8 sm:h-8 bg-green-500 text-white rounded-full flex items-center justify-center font-bold text-sm sm:text-base">
-        {number}
-      </div>
-      <div>
-        <h3 className="font-semibold text-lg sm:text-xl mb-2">{title}</h3>
-        <p className="text-sm sm:text-base">{children}</p>
-      </div>
-    </motion.div>
-  );
-}
+const Step = ({
+  number,
+  title,
+  children,
+}: {
+  number: number;
+  title: string;
+  children: React.ReactNode;
+}) => (
+  <div className="flex flex-col bg-white rounded-lg p-6 shadow-md">
+    <span className="text-4xl font-bold text-green-600 mb-2">{number}</span>
+    <h3 className="text-lg font-semibold mb-2">{title}</h3>
+    <p className="text-gray-600">{children}</p>
+  </div>
+);
