@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { ReactNode, useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
@@ -22,6 +22,23 @@ import {
   Sun,
   ArrowRight,
 } from "lucide-react";
+
+interface FeatureCardProps {
+  icon: ReactNode;
+  title: string;
+  description: string;
+}
+
+interface BenefitItemProps {
+  title: string;
+  children: ReactNode;
+}
+
+interface StepProps {
+  number: number;
+  title: string;
+  children: ReactNode;
+}
 
 export default function LandingPage() {
   const [isContactFormOpen, setIsContactFormOpen] = useState(false);
@@ -288,7 +305,7 @@ export default function LandingPage() {
   );
 }
 
-function FeatureCard({ icon, title, description }) {
+function FeatureCard({ icon, title, description }: FeatureCardProps) {
   return (
     <motion.div
       whileHover={{ scale: 1.05 }}
@@ -301,7 +318,7 @@ function FeatureCard({ icon, title, description }) {
   );
 }
 
-function BenefitItem({ title, children }) {
+function BenefitItem({ title, children }: BenefitItemProps) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -318,7 +335,7 @@ function BenefitItem({ title, children }) {
   );
 }
 
-function Step({ number, title, children }) {
+function Step({ number, title, children }: StepProps) {
   return (
     <motion.div
       initial={{ opacity: 0, x: -20 }}
