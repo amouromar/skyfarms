@@ -19,7 +19,6 @@ import {
   Leaf,
   Building,
   Apple,
-  Sun,
   ArrowRight,
 } from "lucide-react";
 
