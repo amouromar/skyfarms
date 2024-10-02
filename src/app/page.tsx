@@ -122,8 +122,8 @@ export default function LandingPage() {
           </h2>
           <p className="text-base sm:text-lg mb-10">
             SkyFarms is revolutionizing agriculture by transforming urban
-            skyscrapers into vertical farms. We&apos;re bringing fresh, locally
-            grown produce right to the heart of cities, making healthy food more
+            skyscrapers into vertical farms. We&apos;re bringing fresh, locally grown
+            produce right to the heart of cities, making healthy food more
             accessible than ever before.
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
@@ -278,15 +278,7 @@ export default function LandingPage() {
   );
 }
 
-const FeatureCard = ({
-  icon,
-  title,
-  description,
-}: {
-  icon: React.ReactNode;
-  title: string;
-  description: string;
-}) => (
+const FeatureCard = ({ icon, title, description }: { icon: React.ReactNode; title: string; description: string; }) => (
   <div className="bg-white rounded-lg shadow-lg p-6">
     <div className="flex justify-center mb-4">{icon}</div>
     <h3 className="text-lg font-semibold mb-2">{title}</h3>
@@ -294,28 +286,14 @@ const FeatureCard = ({
   </div>
 );
 
-const BenefitItem = ({
-  title,
-  children,
-}: {
-  title: string;
-  children: React.ReactNode;
-}) => (
+const BenefitItem = ({ title, children }: { title: string; children: React.ReactNode; }) => (
   <div className="flex flex-col bg-white rounded-lg p-6 shadow-md">
     <h3 className="text-lg font-semibold mb-2">{title}</h3>
     <p className="text-gray-600">{children}</p>
   </div>
 );
 
-const Step = ({
-  number,
-  title,
-  children,
-}: {
-  number: number;
-  title: string;
-  children: React.ReactNode;
-}) => (
+const Step = ({ number, title, children }: { number: number; title: string; children: React.ReactNode; }) => (
   <div className="flex flex-col bg-white rounded-lg p-6 shadow-md">
     <span className="text-4xl font-bold text-green-600 mb-2">{number}</span>
     <h3 className="text-lg font-semibold mb-2">{title}</h3>
